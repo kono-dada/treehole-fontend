@@ -1,28 +1,64 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar
+        app
+        color="#00BFF77F"
+        absolute
+    >
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-toolbar-title>某个可以发帖的网站</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-menu
+          bottom
+          right
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+              icon
+              color="yellow"
+              v-bind="attrs"
+              v-on="on"
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list dense>
+          <v-list-item-group>
+            <v-list-item href="/about">
+              <v-list-item-title>about</v-list-item-title>
+            </v-list-item>
+            <v-list-item href="/markdown">
+              <v-list-item-title>markdown</v-list-item-title>
+            </v-list-item>
+            <v-list-item href="/">
+              <v-list-item-title>home</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-menu>
+
+    </v-app-bar>
+
+    <router-view></router-view>
+
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {},
+
+  data: () => ({
+  }),
+
+  methods:{
+  }
+};
+</script>
